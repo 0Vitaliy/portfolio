@@ -14,11 +14,19 @@ export const Banner = () => {
             height: 'calc(100vh - 118.5px)',
           }}
         >
-          <Box sx={{ fontSize: '40px', fontWeight: '700px', flex: 1 }}>
-            Hi 👋, My name is
+          <Box
+            sx={{
+              fontSize: '52px',
+              lineHeight: '70px',
+              fontWeight: '700px',
+              flex: 1,
+            }}
+          >
+            Hi 👋,
+            <br /> My name is
             <Box
               sx={{
-                fontSize: '40px',
+                fontSize: '52px',
                 fontWeight: 'bold',
                 background:
                   'linear-gradient(to right, #13B0F5 3%, #E70FAA 100%)',
@@ -33,7 +41,7 @@ export const Banner = () => {
             I build things for web
           </Box>
           <Box>
-            <Image src='/av.png' width={300} height={300} alt='' />
+            <Image src='/av.png' width={350} height={350} alt='' />
           </Box>
         </Box>
       </Wrap>

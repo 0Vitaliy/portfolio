@@ -1,13 +1,12 @@
-import { Box, Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material';
 
 export const Logo = () => {
   return (
-    <Box> 
+    <Box>
       <Typography
-        variant="h6"
+        variant='h6'
         noWrap
-        component="a"
-        href="#app-bar-with-responsive-menu"
+        component='a'
         sx={{
           mr: 2,
           display: { xs: 'none', md: 'flex' },
@@ -21,5 +20,5 @@ export const Logo = () => {
         LOGO
       </Typography>
     </Box>
-  )
-}
+  );
+};
