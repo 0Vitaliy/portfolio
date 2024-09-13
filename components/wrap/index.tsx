@@ -10,7 +10,7 @@ export const Wrap: React.FC<MyComponentProps> = ({ children, sx }) => {
   return (
     <Box
       sx={{
-        maxWidth: '1300px',
+        maxWidth: '1200px',
         m: 'auto',
         ...sx,
       }}
