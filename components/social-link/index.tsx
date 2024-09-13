@@ -5,10 +5,13 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 export const SocialLink = () => {
   return (
     <Box>
-      <IconButton>
+      <IconButton href='https://github.com/0Vitaliy' target='_blank'>
         <GitHubIcon sx={{ color: '#A7A7A7' }} />
       </IconButton>
-      <IconButton>
+      <IconButton
+        href='https://www.linkedin.com/in/vitalii-makovskyi-8024a6170/'
+        target='_blank'
+      >
         <LinkedInIcon sx={{ color: '#A7A7A7' }} />
       </IconButton>
     </Box>
