@@ -1,5 +1,5 @@
-import { Box } from '@mui/material';
+import { MyTechStackModules } from '@/modules/my-tech-stack';
 
 export default function TechStack() {
-  return <Box>TechStack</Box>;
+  return <MyTechStackModules />;
 }
