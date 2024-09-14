@@ -1,3 +1,4 @@
+import { Title } from '@/components/title';
 import { Wrap } from '@/components/wrap';
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
@@ -21,12 +22,10 @@ export const ContentTechStack = () => {
   return (
     <Box sx={{ textAlign: 'center' }}>
       <Wrap>
-        <Typography sx={{ fontSize: '48px', mb: '20px', fontWeight: 700 }}>
-          My Tech Stack
-        </Typography>
-        <Typography sx={{ fontSize: '32px', mb: '50px', color: '#A7A7A7' }}>
-          Technologies I’ve been working with recently
-        </Typography>
+        <Title
+          title='My Tech Stack'
+          subtitle='Technologies I’ve been working with recently'
+        />
 
         <Box
           sx={{

@@ -1,5 +1,5 @@
-import { Box } from '@mui/material';
+import { ContactModules } from '@/modules/contact';
 
 export default function Contact() {
-  return <Box>Contact</Box>;
+  return <ContactModules />;
 }

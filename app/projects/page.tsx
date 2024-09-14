@@ -1,5 +1,5 @@
-import { Box } from '@mui/material';
+import { ProjectsModules } from '@/modules/projects';
 
 export default function Projects() {
-  return <Box>Projects</Box>;
+  return <ProjectsModules />;
 }
