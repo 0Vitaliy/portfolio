@@ -1,5 +1,4 @@
 import { Logo } from '@/components/logo';
-import { Navbar } from '@/components/navbar';
 import { SocialLink } from '@/components/social-link';
 import { Wrap } from '@/components/wrap';
 import { Box, Divider, Stack } from '@mui/material';

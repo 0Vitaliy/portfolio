@@ -1,6 +1,12 @@
 import { Typography } from '@mui/material';
 
-export const Title = ({ title, subtitle }: any) => {
+export const Title = ({
+  title,
+  subtitle,
+}: {
+  title: string;
+  subtitle: string;
+}) => {
   return (
     <>
       <Typography
