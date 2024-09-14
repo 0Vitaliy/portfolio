@@ -3,7 +3,14 @@ import { Box } from '@mui/material';
 
 export const ContentProjects = () => {
   return (
-    <Box sx={{ textAlign: 'center', mt: '100px' }}>
+    <Box
+      sx={{
+        textAlign: 'center',
+        minHeight: 'calc(100vh - 300px)',
+        display: 'flex',
+        alignItems: 'center',
+      }}
+    >
       <Wrap>
         <Box sx={{ fontSize: '58px', mb: '10px' }}>
           For any questions please mail us:
