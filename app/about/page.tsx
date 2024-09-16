@@ -1,5 +1,5 @@
-import { Box } from '@mui/material';
+import { AboutModules } from '@/modules/about';
 
 export default function About() {
-  return <Box>About</Box>;
+  return <AboutModules/>;
 }
