@@ -7,6 +7,8 @@ interface MyComponentProps {
   children: ReactNode;
 }
 
+// Layout
+
 export const Layout: React.FC<MyComponentProps> = ({ children }) => {
   return (
     <Box>
