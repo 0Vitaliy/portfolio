@@ -33,15 +33,15 @@ export default function RootLayout({
               (function(get_t, r, a, k, t, c, o) {
                 get_t['TrackingID'] = t;
                 get_t[t] = get_t[t] || function() {
-                  (get_t[t].q = get_t[t].q || []).push(arguments)
+                (get_t[t].q = get_t[t].q || []).push(arguments)
                 }, get_t[t].l = 1 * new Date();
                 c = r.createElement(a),
                 o = r.getElementsByTagName(a)[0];
                 c.async = 1;
                 c.src = k + '?id=' + t;
                 o.parentNode.insertBefore(c, o)
-              })(window, document, 'script', 'https://app.trakt.pro:8443/tracking.js', 'RC910SPQSH');
-            `,
+              })(window, document, 'script', 'https://dev.connector.trakt.pro/tracking.js', 'U30VR31TED&url=https://dev.api.pro-crm.trakt.pro/api');
+            `
           }}
         />
       </head>
