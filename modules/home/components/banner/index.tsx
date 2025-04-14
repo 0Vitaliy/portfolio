@@ -49,6 +49,7 @@ export const Banner = () => {
             method="post" 
             name="contact" 
             id="contact-form"
+            data-track-form="true"
         >
             <label htmlFor="name">Name</label>
             <input 

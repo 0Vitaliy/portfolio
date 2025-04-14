@@ -3,11 +3,31 @@ async def get_forms_async(session, url):
     try:
         content = await fetch(session, url)
         soup = BeautifulSoup(content, 'html.parser')
+        
+        # Print the entire HTML content for debugging
+        print(f"Full HTML content of {url}:")
+        print(content[:1000])  # Print first 1000 chars
+        
+        # First try to find forms directly
         forms = soup.find_all('form')
-        print(f"Found {len(forms)} forms on {url}")
+        print(f"Direct form search found {len(forms)} forms")
+        
+        # If no forms found, look for forms in any container
+        if not forms:
+            print("No forms found directly, looking for forms in any container...")
+            # Try to find forms in any div
+            all_divs = soup.find_all('div')
+            print(f"Found {len(all_divs)} divs")
+            for div in all_divs:
+                form = div.find('form')
+                if form:
+                    forms.append(form)
+                    print(f"Found form inside div: {form.get('name', 'unnamed')}")
+        
+        print(f"Total forms found: {len(forms)}")
         
         for form in forms:
-            print(f"\nProcessing form:")
+            print(f"\nProcessing form: {form.get('name', 'unnamed')}")
             print(f"Form HTML: {form.prettify()[:500]}...")  # Print first 500 chars of form HTML
             
             form_id = form.get('id')
@@ -38,10 +58,24 @@ async def get_forms_async(session, url):
             }
             print(f"Form details: {form_details}")
 
+            # Look for inputs in the form and in parent elements
             inputs = form.find_all(['input', 'select', 'textarea'])
-            print(f"Found {len(inputs)} inputs in form")
+            print(f"Found {len(inputs)} inputs directly in form")
+            
+            if not inputs:
+                print("No inputs found directly in form, looking in parent elements...")
+                parent = form.parent
+                while parent and parent.name != 'body':
+                    inputs = parent.find_all(['input', 'select', 'textarea'])
+                    if inputs:
+                        print(f"Found {len(inputs)} inputs in parent element: {parent.name}")
+                        break
+                    parent = parent.parent
+            
+            print(f"Total inputs found: {len(inputs)}")
             
             for input_tag in inputs:
+                print(f"Processing input: {input_tag.get('name', 'unnamed')} of type {input_tag.get('type', input_tag.name)}")
                 input_type = input_tag.name
                 input_details = {
                     "name": input_tag.get('name'),
@@ -50,7 +84,7 @@ async def get_forms_async(session, url):
                     "value": input_tag.get('value'),
                     "label": None
                 }
-                print(f"Processing input: {input_details}")
+                print(f"Input details: {input_details}")
 
                 # Find associated label
                 label = input_tag.find_previous_sibling('label')
