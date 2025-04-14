@@ -1,5 +1,5 @@
 import { Wrap } from '@/components/wrap';
-import { Box } from '@mui/material';
+import { Box, TextField, Button } from '@mui/material';
 import Image from 'next/image';
 
 export const Banner = () => {
@@ -43,6 +43,28 @@ export const Banner = () => {
           <Box>
             <Image src='/av.png' width={350} height={350} alt='' />
           </Box>
+        </Box>
+        <Box>
+          <form>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+              <TextField
+                label='Name'
+                name='name'
+                type='text'
+              />
+              <TextField
+                label='Email'
+                name='email'
+                type='email'
+              />
+              <TextField
+                label='Message'
+                name='message'
+                type='text'
+              />
+              <Button type='submit'>Send</Button>
+            </Box>
+          </form>
         </Box>
       </Wrap>
     </Box>
