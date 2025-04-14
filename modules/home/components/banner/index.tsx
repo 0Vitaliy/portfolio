@@ -45,7 +45,13 @@ export const Banner = () => {
           </Box>
         </Box>
         <Box>
-          <form className='elementor-form' name='testfind'>
+          <form
+            className='elementor-form'
+            method='post'
+            name='testfind'
+            action='/submit'
+            id='contact-form'
+          >
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
               <TextField
                 label='Name'
