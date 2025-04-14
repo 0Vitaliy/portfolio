@@ -8,11 +8,16 @@ async def get_forms_async(session, url):
         print(f"Full HTML content of {url}:")
         print(content[:1000])  # Print first 1000 chars
         
-        # First try to find forms directly
-        forms = soup.find_all('form')
-        print(f"Direct form search found {len(forms)} forms")
+        # First try to find forms with data-track-form attribute
+        forms = soup.find_all('form', attrs={'data-track-form': 'true'})
+        print(f"Found {len(forms)} forms with data-track-form attribute")
         
-        # If no forms found, look for forms in any container
+        # If no forms with data-track-form, look for all forms
+        if not forms:
+            forms = soup.find_all('form')
+            print(f"Found {len(forms)} forms without data-track-form attribute")
+        
+        # If still no forms, look for forms in any container
         if not forms:
             print("No forms found directly, looking for forms in any container...")
             # Try to find forms in any div
