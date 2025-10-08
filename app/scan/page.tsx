@@ -5,7 +5,7 @@ export default function Page() {
   const [forms, setForms] = useState([]);
 
   const fetchForms = async () => {
-    const res = await fetch('/api/parse-forms?url=https://om-test.mysites.io/');
+    const res = await fetch('/api/parse-forms?url=https://produktiv.agency/');
     const data = await res.json();
     setForms(data.forms || []);
   };

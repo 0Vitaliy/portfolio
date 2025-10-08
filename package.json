@@ -16,7 +16,8 @@
     "next": "14.2.10",
     "puppeteer": "^24.7.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "xml2js": "^0.6.2"
   },
   "devDependencies": {
     "@types/node": "^20",

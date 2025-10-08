@@ -22,12 +22,44 @@ export async function GET(request) {
     const page = await browser.newPage();
     await page.goto(baseUrl, { waitUntil: 'domcontentloaded' });
 
-    // Збір лінків
-    const internalLinks = await page.$$eval('a[href]', anchors =>
-      anchors
-        .map(a => a.href)
-        .filter(href => href.startsWith(window.location.origin)) // тільки внутрішні
-    );
+    // Збір внутрішніх лінків
+    const internalLinks = await page.$$eval('a[href], form[action], script[src], link[href], img[src]', elements => {
+      const links = [];
+
+      // Для <a href>
+      elements.forEach(el => {
+        const href = el.getAttribute('href');
+        if (href && href.startsWith(window.location.origin)) {
+          links.push(href);
+        }
+      });
+
+      // Для <form action>
+      elements.forEach(el => {
+        const action = el.getAttribute('action');
+        if (action && action.startsWith(window.location.origin)) {
+          links.push(action);
+        }
+      });
+
+      // Для <script src> та <link href>
+      elements.forEach(el => {
+        const src = el.getAttribute('src') || el.getAttribute('href');
+        if (src && src.startsWith(window.location.origin)) {
+          links.push(src);
+        }
+      });
+
+      // Для <img src>
+      elements.forEach(el => {
+        const src = el.getAttribute('src');
+        if (src && src.startsWith(window.location.origin)) {
+          links.push(src);
+        }
+      });
+
+      return links;
+    });
 
     // Додаємо головну сторінку також
     internalLinks.unshift(baseUrl);
