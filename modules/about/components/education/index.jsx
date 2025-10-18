@@ -1,71 +1,118 @@
-import { Box, Stack, Typography } from '@mui/material';
-import BusinessIcon from '@mui/icons-material/Business';
-import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
-import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
+"use client";
+import { Box, Stack, Typography } from "@mui/material";
+import BusinessIcon from "@mui/icons-material/Business";
+import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const educationArr = [
   {
-    title: 'Bachelor in Software engineering',
-    time: ' Aug 2015 - Jun 2019',
-    location: 'Kyiv',
-    name: 'National Pedagogical Dragomanov University',
+    id: 1,
+    title: "Bachelor in Software engineering",
+    time: "Aug 2015 - Jun 2019",
+    location: "Kyiv",
+    name: "National Pedagogical Dragomanov University",
     fultime: true,
   },
   {
-    title: 'Front-End developer',
-    time: 'April 2018 — August 2018',
-    location: 'Kyiv',
-    name: ' PHP-ACADEMY',
+    id: 2,
+    title: "Front-End developer",
+    time: "April 2018 — August 2018",
+    location: "Kyiv",
+    name: "PHP-ACADEMY",
     fultime: false,
   },
 ];
 
 export const Education = () => {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
   return (
-    <Box sx={{ maxWidth: '720px', mb: '50px' }}>
-      <Typography sx={{ fontWeight: 700, fontSize: '42px' }}>
+    <Box
+      ref={ref}
+      sx={{ maxWidth: "720px", mb: "50px", px: { xs: "15px", md: "0" } }}
+    >
+      <Typography
+        component={motion.div}
+        initial={{ opacity: 0, y: 30 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6 }}
+        sx={{
+          fontWeight: 700,
+          fontSize: { xs: "32px", md: "42px" },
+          mb: "20px",
+        }}
+      >
         Education
       </Typography>
-      {educationArr.map((item) => {
+      {educationArr.map((item, index) => {
         return (
-          <Box sx={{ p: '25px 0', borderBottom: '2px solid #EBEAED' }}>
+          <Box
+            key={item.id}
+            component={motion.div}
+            initial={{ opacity: 0, x: -30 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            sx={{
+              p: { xs: "20px 0", md: "25px 0" },
+              borderBottom: "2px solid #EBEAED",
+              "&:hover": {
+                background: "rgba(19, 176, 245, 0.05)",
+                transition: "background 0.3s ease",
+              },
+            }}
+          >
             <Stack
-              flexDirection='row'
-              justifyContent='space-between'
-              alignItems='center'
+              flexDirection={{ xs: "column", sm: "row" }}
+              justifyContent="space-between"
+              alignItems={{ xs: "flex-start", sm: "center" }}
               mb={2}
+              gap={{ xs: "10px", sm: "0" }}
             >
-              <Box sx={{ fontSize: '20px' }}>{item.title}</Box>
+              <Box
+                sx={{ fontSize: { xs: "18px", md: "20px" }, fontWeight: 600 }}
+              >
+                {item.title}
+              </Box>
               <Box
                 sx={{
-                  color: '#018C0F',
-                  background: '#D7FFE0',
-                  borderRadius: '24px',
-                  p: '8px 25px',
+                  color: "#018C0F",
+                  background: "#D7FFE0",
+                  borderRadius: "24px",
+                  p: "8px 20px",
                   fontWeight: 600,
+                  fontSize: { xs: "12px", md: "14px" },
                 }}
               >
-                {item.fultime ? 'Full Time' : 'Part Time'}
+                {item.fultime ? "Full Time" : "Part Time"}
               </Box>
             </Stack>
             <Stack
-              flexDirection='row'
-              justifyContent='space-between'
-              fontSize={12}
+              flexDirection={{ xs: "column", sm: "row" }}
+              justifyContent="space-between"
+              fontSize={{ xs: "11px", md: "12px" }}
+              gap={{ xs: "10px", sm: "0" }}
             >
-              <Stack flexDirection='row' gap={4}>
-                <Stack flexDirection='row' alignItems='center' gap={0.5}>
-                  <BusinessIcon />
+              <Stack
+                flexDirection={{ xs: "column", sm: "row" }}
+                gap={{ xs: 1, sm: 4 }}
+              >
+                <Stack flexDirection="row" alignItems="center" gap={0.5}>
+                  <BusinessIcon sx={{ fontSize: "16px" }} />
                   {item.name}
                 </Stack>
-                <Stack flexDirection='row' alignItems='center' gap={0.5}>
-                  <LocationOnOutlinedIcon />
+                <Stack flexDirection="row" alignItems="center" gap={0.5}>
+                  <LocationOnOutlinedIcon sx={{ fontSize: "16px" }} />
                   {item.location}
                 </Stack>
               </Stack>
 
-              <Stack flexDirection='row' alignItems='center' gap={0.5}>
-                <CalendarMonthOutlinedIcon />
+              <Stack flexDirection="row" alignItems="center" gap={0.5}>
+                <CalendarMonthOutlinedIcon sx={{ fontSize: "16px" }} />
                 {item.time}
               </Stack>
             </Stack>

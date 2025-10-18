@@ -40,3 +40,44 @@ a {
     color-scheme: dark;
   }
 }
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #13b0f5 0%, #e70faa 100%);
+  border-radius: 10px;
+  border: 2px solid #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #e70faa 0%, #13b0f5 100%);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #13b0f5 #1a1a1a;
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(19, 176, 245, 0.3);
+  color: #fff;
+}
+
+::-moz-selection {
+  background: rgba(19, 176, 245, 0.3);
+  color: #fff;
+}
