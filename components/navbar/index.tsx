@@ -22,7 +22,6 @@ export const Navbar = () => {
         <Button
           key={page.title}
           sx={{
-            my: 2,
             color: "white",
             display: "block",
             textDecoration: "none",

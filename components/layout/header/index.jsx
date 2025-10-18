@@ -40,7 +40,18 @@ export const Header = () => {
   };
 
   return (
-    <Box sx={{ p: { xs: "20px 15px", md: "25px 30px" } }}>
+    <Box
+      sx={{
+        p: { xs: "20px 15px", md: "25px 30px" },
+        position: "sticky",
+        top: 0,
+        zIndex: 1000,
+        background: "rgba(10, 10, 10, 0.95)",
+        backdropFilter: "blur(10px)",
+        borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+        transition: "all 0.3s ease",
+      }}
+    >
       <Wrap
         sx={{
           display: "flex",

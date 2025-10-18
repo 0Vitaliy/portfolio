@@ -13,9 +13,16 @@ interface MyComponentProps {
 
 export const Layout: React.FC<MyComponentProps> = ({ children }) => {
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+    <Box sx={{ minHeight: "100vh", position: "relative" }}>
       <Header />
-      <Box component="main" sx={{ flex: 1 }}>
+      <Box
+        component="main"
+        sx={{
+          minHeight: "calc(100vh - 200px)",
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
         {children}
       </Box>
       <Footer />
